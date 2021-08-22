@@ -19,6 +19,7 @@
   "dependencies": {
     "mocha": "^9.1.0",
     "mongo": "^0.1.0",
+    "mongoose": "^5.13.7",
     "nodemon": "^2.0.12"
   }
 }
