@@ -1,0 +1,24 @@
+{
+  "name": "mongocrud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/21grahams-workshops/mongoCRUD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/21grahams-workshops/mongoCRUD/issues"
+  },
+  "homepage": "https://github.com/21grahams-workshops/mongoCRUD#readme",
+  "dependencies": {
+    "mocha": "^9.1.0",
+    "mongo": "^0.1.0",
+    "nodemon": "^2.0.12"
+  }
+}
