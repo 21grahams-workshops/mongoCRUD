@@ -1,3 +1,7 @@
+//======================
+//===MONGO CONNECTION===
+//======================
+
 const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost/mongoCRUD_test", {
