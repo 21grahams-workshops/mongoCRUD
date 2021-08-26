@@ -8,40 +8,31 @@ describe("Deleting a user", () => {
     joe.save().then(() => done());
   });
 
-  it("model instance remove", (done) => {
-    joe.remove()
+  // helper function to remove duplicate logic
+  const deleteUser = (operation, done) => {
+    operation
       .then(() => User.findOne({ name: "Joe" }))
       .then((user) => {
         assert(user === null);
         done();
       });
+  }
+
+  // model instance
+  it("model instance remove", (done) => {
+    deleteUser(joe.remove(), done);
   });
 
+  // model classes
   it("class method remove", (done) => {
-    // remove a bunch of records at once with some given criteria
-    User.deleteMany({ name: "Joe" })
-      .then(() => User.findOne({ name: "Joe" }))
-      .then((user) => {
-        assert(user === null);
-        done();
-      });
+    deleteUser(User.deleteMany({ name: "Joe" }), done)
   });
 
   it("class method findOneAndRemove", (done) => {
-    User.findOneAndRemove({ name: 'Joe' })
-      .then(() => User.findOne({ name: "Joe" }))
-      .then((user) => {
-        assert(user === null);
-        done();
-      });
+    deleteUser(User.findOneAndRemove({ name: 'Joe' }), done);
   });
 
   it("class method findByIdAndRemove", (done) => {
-    User.findByIdAndRemove(joe._id)
-      .then(() => User.findOne({ name: "Joe" }))
-      .then((user) => {
-        assert(user === null);
-        done();
-      });
+    deleteUser(User.findByIdAndRemove(joe._id), done);
   });
 });
