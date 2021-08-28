@@ -44,7 +44,7 @@ describe("Subdocuments", () => {
         user.posts[0].remove();
         return user.save();
       })
-        .then(() => User.findOne({name: 'Joe'}))
+        .then(() => User.findOne({ name: 'Joe' }))
         .then((user) => {
           assert(user.posts.length === 0);
           done();
