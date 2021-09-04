@@ -21,8 +21,13 @@ before((done) => {
 // hook - function that gets executed before any testing function gets executed inside test suite
 
 beforeEach((done) => {
-  mongoose.connection.collections.users.drop(() => {
-    // Ready to run the next test
-    done();
+  const { users, comments, blogposts } = mongoose.connection.collections;
+  // Ready to run the next test
+  users.drop(() => {
+    comments.drop(() => {
+      blogposts.drop(() => {
+        done();
+      });
+    });
   });
 });
