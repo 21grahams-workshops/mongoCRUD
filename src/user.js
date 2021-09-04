@@ -21,7 +21,14 @@ const UserSchema = new Schema({
 
 UserSchema.virtual('postCount').get(function() {
   return this.posts.length;
-});
+}); // virtual fields
+
+UserSchema.pre('remove', function(next) {
+  const BlogPost = mongoose.model('blogPost');
+
+  BlogPost.deleteMany({ _id: { $in: this.blogPosts } })
+    .then(() => next());
+}) // middleware
 
 const User = mongoose.model('user', UserSchema);
 
